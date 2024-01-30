@@ -39,7 +39,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Choose a license for your project:',
-        choices: ['MIT', 'Academic Free License v3.0', 'Apache 2.0', 'Microsoft Public License'],
+        choices: ['MIT', 'Apache 2.0', 'Boost', 'Mozilla Public License 2.0'],
       },
       {
         type: 'input',
@@ -58,7 +58,12 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer
+        .prompt(questions).then((answers) => {
+        console.log(answers);
+      })
+}
 
 // Function call to initialize app
 init();
