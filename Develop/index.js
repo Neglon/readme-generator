@@ -39,7 +39,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Choose a license for your project:',
-        choices: ['MIT', 'Apache', 'Boost', 'Mozilla'],
+        choices: ['MIT', 'Apache', 'Boost', 'Mozilla', 'None'],
       },
       {
         type: 'input',
@@ -54,16 +54,22 @@ const questions = [
 
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// Function that creates and writes the readme file
+function writeToFile(data) {
+    fs.writeFile('README.md', data, (err) =>
+        err ? console.error(err) : console.log('README Created')
+    )
+}
 
-// TODO: Create a function to initialize app
+// Initialize function
 function init() {
     inquirer
         .prompt(questions).then((answers) => {
-        console.log(answers);
+        //console.log(answers);
         const readmeContent = generateMarkdown(answers);
-        console.log(readmeContent);
+        //console.log(readmeContent);
+        writeToFile(readmeContent);
+
 
       })
 }

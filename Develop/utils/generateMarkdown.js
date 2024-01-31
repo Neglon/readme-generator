@@ -6,11 +6,11 @@ function renderLicenseBadge(license) {
     Boost: '![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)',
     Mozilla: '![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)',
   };
-  if (!license){
+  if (license === 'None'){
     return '';
   } else {
     // badges.license doesnt work, when using a variable in the parameter .noation will return undefined, bracket notation is required
-    badges[license];
+    return badges[license];
   }
 }
 
@@ -23,7 +23,7 @@ function renderLicenseLink(license) {
     Boost: 'https://www.boost.org/LICENSE_1_0.txt',
     Mozilla: 'https://opensource.org/licenses/MPL-2.0',
   }
-  if (!license) {
+  if (license === 'None') {
     return '';
   } else {
     return links[license]
@@ -34,7 +34,7 @@ function renderLicenseLink(license) {
 // Function that creates the license section, while calling the licenceLink function to generate everything thats needed for that section
 function renderLicenseSection(license) {
   const licenseLink = renderLicenseLink(license);
-  if (!license) {
+  if (license === 'None') {
     return '';
   } else {
     
@@ -51,6 +51,7 @@ function generateMarkdown(data) {
   //variables and function calls to hold licence info
   const licenseBadge = renderLicenseBadge(data.license);
   const licenseSection = renderLicenseSection(data.license);
+  //console.log(licenseBadge);
 
 
   return `# ${data.title}
