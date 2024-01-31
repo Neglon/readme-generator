@@ -39,7 +39,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Choose a license for your project:',
-        choices: ['MIT', 'Apache 2.0', 'Boost', 'Mozilla Public License 2.0'],
+        choices: ['MIT', 'Apache', 'Boost', 'Mozilla'],
       },
       {
         type: 'input',
@@ -62,6 +62,9 @@ function init() {
     inquirer
         .prompt(questions).then((answers) => {
         console.log(answers);
+        const readmeContent = generateMarkdown(answers);
+        console.log(readmeContent);
+
       })
 }
 
